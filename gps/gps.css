@@ -4,17 +4,25 @@
     margin: 0;
     padding: 0;
 }
-
-.container{
-	background-color:white;
-  height:620px;
-}
-
 #gps{
-  margin-top:10px;
-  margin-left: 20px;
+  margin-top:40px;
+  margin-left: 75%;
 }
 #gps_input{
-  margin-top:20px;
+  margin-top:0px;
+  margin-left:75%;
+}
+.sidebar1{
   margin-left:20px;
+}
+.sidebar2 img{
+  margin-left:20px;
+  width:24%;
+  height:300px;
+}
+.side-background{
+background-color:#f7fcfe;
+
+  height:641px;
+  width:100%;
 }

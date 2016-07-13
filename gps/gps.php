@@ -7,22 +7,26 @@
 	<link href="./gps.css" rel="stylesheet">
 	<style>
 	#map{
-		margin-top:15px;
-		width:100%;
-		height:550px;
-		box-shadow: 10px 10px 10px ;
+		width:73%;
+		height:641px;
+		float:left;
 	}
 	</style>
-
 </head>
 
 <body>
 
-	<div id="Container" class="container">
+	<div id="map"></div>
+	<div class="side-background">
+	<div class="sidebar1">
 		<form id="gps_input" action="#" method="post">
 			<input type="file" name="name" value="">
 			<input type="submit"value="GO">
 		</form>
+	</div>
+
+
+
 <div id="gps">
 			<?php
 			//exifdataを取り出す
@@ -90,18 +94,23 @@ $longitude_data = $data1+$data2+$data3;
 
 //　 緯度  + 経度
 if(isset($gps_n_or_s)||isset($latitude_data)||isset($gps_e_or_w)||isset($longitude_data)){
-echo "GPSposition  :".$latitude_data.",".$longitude_data;
+echo "GPSposition<br>".$latitude_data.",".$longitude_data;
 }
 //緯度・経度の初期値と画像にgpsdataが入っていないときの処理
 if(empty($latitude_data)||empty($longitude_data)){
 	$latitude_data = 36.228397222222;
 	$longitude_data =139.53346388889;
-	echo '<p>画像にgps情報が入っていない、又は画像が選択されていない状態です。</p>';
+	echo '<p>画像にgps情報が入っていない、<br><br>又は画像が選択されていない状態です。</p>';
 }
 
 ?>
 </div>
-		 <div id="map"></div>
+
+<div class="sidebar2">
+	<?php if(isset($_POST['name'])){echo "<img src='./photos/".$_POST['name']."'>";}?>
+</div>
+	</div>
+
 		 <script>
 		 var map;
 function initMap() {
