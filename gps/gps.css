@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+	background-color:white;
+  height:620px;
+}
+
+#gps{
+  margin-top:10px;
+  margin-left: 20px;
+}
+#gps_input{
+  margin-top:20px;
+  margin-left:20px;
+}
