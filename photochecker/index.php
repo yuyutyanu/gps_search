@@ -4,34 +4,37 @@
 <head>
 	<meta charset="utf-8">
 	<title>gps_search</title>
-	<link href="./gps.css" rel="stylesheet">
+  <link rel="stylesheet" href="./gps.css" media="screen" title="no title" charset="utf-8">
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 	<style>
-	#map{
-		width:73%;
-		height:641px;
-		float:left;
-	}
+
+		#map{
+			width:98.9%;
+			height:506px;
+			 border:solid 7px;
+		}
+
+
 	</style>
 </head>
 
 <body>
-
-	<div id="map"></div>
-	<div class="side-background">
-	<div class="sidebar1">
-		<form id="gps_input" action="#" method="post">
-			<input type="file" name="name" value="">
-			<input type="submit"value="GO">
-		</form>
+	<?php
+	//jpg,pngファイルが送信されたら./photo/test.jpgにアップロード
+	  if(isset($_FILES['file'])){
+	    move_uploaded_file($_FILES['file']['tmp_name'], './photos/test.jpg');
+	  }
+		echo "<img src='./photos/test.jpg' id='photo'>"
+	?>
+	<div id="title">
+		<p>&nbsp Photo</p>
+		<P>Checker</p>
 	</div>
-
-
-
-<div id="gps">
+<div class="sidebar">
 			<?php
 			//exifdataを取り出す
-		if(!empty($_POST["name"])){
-		$img = './photos/'.$_POST["name"];
+		if(isset($_FILES['file'])){
+		$img = "./photos/test.jpg";
 		$exif = @exif_read_data($img);
 
 		//exifdataにgpsdataがあれば取り出す
@@ -70,7 +73,7 @@
 $j=0;
 $longitude_data="";
 while($j<3){
-	//gps情報を　○○/△△　から　小数点の値に変更
+	//gps情報の書式をfloat型に変更
 	$longitude = explode("/",$gps_longi[$j]);
 
 	if($j==0){
@@ -91,26 +94,32 @@ $longitude_data = $data1+$data2+$data3;
 	}
 }
 }
-
-//　 緯度  + 経度
-if(isset($gps_n_or_s)||isset($latitude_data)||isset($gps_e_or_w)||isset($longitude_data)){
-echo "GPSposition<br>".$latitude_data.",".$longitude_data;
-}
-//緯度・経度の初期値と画像にgpsdataが入っていないときの処理
-if(empty($latitude_data)||empty($longitude_data)){
-	$latitude_data = 36.228397222222;
-	$longitude_data =139.53346388889;
-	echo '<p>画像にgps情報が入っていない、<br><br>又は画像が選択されていない状態です。</p>';
-}
-
 ?>
+
 </div>
 
-<div class="sidebar2">
-	<?php if(isset($_POST['name'])){echo "<img src='./photos/".$_POST['name']."'>";}?>
-</div>
-	</div>
+<div id="gps">
+  <form  id="input_gps_files" name="fileform" enctype="multipart/form-data" action="#" method="post">
+    <input name="file"type="file"accept="image/jpeg,image/png">
+    <input type="submit"value="送信">
+  </form>
 
+  <div id="lat_and_long">
+  <?php
+  //　 緯度  + 経度　を表示
+  if(isset($gps_n_or_s)||isset($latitude_data)||isset($gps_e_or_w)||isset($longitude_data)){
+  echo "GPSposition<br><br>".$latitude_data.",".$longitude_data;
+  }
+  //緯度・経度の初期値と画像にgpsdataが入っていないときの処理
+  if(empty($latitude_data)||empty($longitude_data)){
+  	$latitude_data = 36.228397222222;
+  	$longitude_data =139.53346388889;
+  	echo '<p>画像にgps情報が入っていない、<br><br>又は画像が選択されていない状態です。</p>';
+  }
+  ?>
+  </div>
+</div>
+<div id="map"></div>
 		 <script>
 		 var map;
 function initMap() {
@@ -120,6 +129,7 @@ function initMap() {
     zoom: 18
   });
 }
+
 </script>
 <script async defer
  	src="http://maps.google.com/maps/api/js?key=AIzaSyCP_uYrL9C5iUgcoNbOuk1U-pCh9PpijbU&language=ja&callback=initMap"></script>
