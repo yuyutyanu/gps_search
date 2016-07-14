@@ -6,14 +6,33 @@
 	<title>gps_search</title>
   <link rel="stylesheet" href="./gps.css" media="screen" title="no title" charset="utf-8">
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+	<meta name=viewport content="width=device-width, initial-scale=1">
 	<style>
-
+@media(min-width:700px){
 		#map{
-			width:98.9%;
+			width:100%;
 			height:506px;
-			 border:solid 7px;
+			 border-top:solid 7px;
+			 border-bottom: solid 7px;
 		}
+	}
 
+@media(max-width:700px){
+	#map{
+		width:100%;
+		height:376px;
+		 border-top:solid 7px;
+		 border-bottom: solid 7px;
+	}
+	@media(max-width:350px){
+		#map{
+			width:100%;
+			height:376px;
+			 border-top:solid 7px;
+			 border-bottom: solid 7px;
+		}
+	}
+}
 
 	</style>
 </head>
@@ -108,13 +127,13 @@ $longitude_data = $data1+$data2+$data3;
   <?php
   //　 緯度  + 経度　を表示
   if(isset($gps_n_or_s)||isset($latitude_data)||isset($gps_e_or_w)||isset($longitude_data)){
-  echo "GPSposition<br><br>".$latitude_data.",".$longitude_data;
+  echo "<div id='gpsposition'>GPSposition <br> ".$latitude_data.",".$longitude_data."</div>";
   }
   //緯度・経度の初期値と画像にgpsdataが入っていないときの処理
   if(empty($latitude_data)||empty($longitude_data)){
   	$latitude_data = 36.228397222222;
   	$longitude_data =139.53346388889;
-  	echo '<p>画像にgps情報が入っていない、<br><br>又は画像が選択されていない状態です。</p>';
+  	echo '<div id="not_photo"><p>画像にGPS情報が入っていない、<br><br>又は画像が選択されていない状態です。</p></div>';
   }
   ?>
   </div>
