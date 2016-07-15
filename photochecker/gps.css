@@ -19,25 +19,18 @@
         height: 184px;
         background-color: #f8e58c;
     }
-    #photo {
-        position: absolute;
-        margin-top: 527px;
-        margin-left: 380px;
-        height: 170px;
-        width: 300px;
-        z-index: 1;
-    }
+
     #not_photo {
         font-family: 'Montserrat', sans-serif;
     }
     #input_gps_files {
         margin-top: 40px;
-        margin-left: 60px;
+        margin-left: 80px;
         margin-bottom: 20px;
     }
     #lat_and_long {
         margin-top: 40px;
-        margin-left: 60px;
+        margin-left: 80px;
     }
     #gpsposition {
         font-family: 'Montserrat', sans-serif;
@@ -62,9 +55,6 @@
         width: 100%;
         height: 295px;
         background-color: #f8e58c;
-    }
-    #photo {
-        display: none;
     }
     #not_photo {
         font-family: 'Montserrat', sans-serif;
@@ -102,9 +92,7 @@
         height: 295px;
         background-color: #f8e58c;
     }
-    #photo {
-        display: none;
-    }
+    
     #not_photo {
         font-family: 'Montserrat', sans-serif;
     }

@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>gps_search</title>
+	<title>Photo Checker</title>
   <link rel="stylesheet" href="./gps.css" media="screen" title="no title" charset="utf-8">
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 	<meta name=viewport content="width=device-width, initial-scale=1">
@@ -42,8 +42,7 @@
 	//jpg,pngファイルが送信されたら./photo/test.jpgにアップロード
 	  if(isset($_FILES['file'])){
 	    move_uploaded_file($_FILES['file']['tmp_name'], './photos/test.jpg');
-	  }
-		echo "<img src='./photos/test.jpg' id='photo'>"
+	}
 	?>
 	<div id="title">
 		<p>&nbsp Photo</p>
